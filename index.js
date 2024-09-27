@@ -1,7 +1,9 @@
 
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
+app.use(cors())
 app.use(express.json())
 
 const generateId = () => {
@@ -81,7 +83,7 @@ app.post('/api/notes', (request, response) => {
  * Finalmente, se enlaza el servidor http a la variable app para "escuchar" las solicitudes
  * http enviadas al puerto 3001
  */
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
